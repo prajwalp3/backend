@@ -1,0 +1,317 @@
+npm  i mongoose...{Stackblitz}
+models   subitem todus   now practice
+under todos 
+1. user.model.js
+2.todo.models.js
+3.subtodo.models.js
+ how does mongoose make a model and export it 
+ so code are as below
+import mongoose from "mongoose"
+const userSchema=new  mongoose.Schema({
+
+useername:{
+Type:String,
+required:true,
+unique:true,
+lowcase:true},
+
+email:{
+type:String,
+unique:true,
+required:true,
+lowercase:true},S
+
+password:{.......},
+isactive:Boolean
+
+
+
+
+},{timestamps:true})
+ export const User = mongoose.model("User",userSchema)
+
+
+
+
+tudo.models.js/////////
+import mongoose from "mongoose"
+const tudoSchema =new mongoose.Schema({
+content{
+type:String,
+required:true,
+},
+complete:{
+type:Boolean,
+defaulet:false,
+
+},
+createdby:{
+type:mongoose.Schema.Types.ObjectId,
+ref:"User"
+}
+Subtodos:[
+{type:mongoose.Schema.Types.ObjectId,
+ref:"Subtods"},
+
+], array of subtodos////////////
+
+},{timestamps:true})
+export const Tudo = mongoose.model("Tudo",tudoSchemanew)
+
+
+
+
+
+
+
+SUB.tudos.models.js./////////
+import mongoose from "mongoose"
+const sub-tudoSchema = new mongoose.Schema({
+content:{
+type:String,
+required:true,
+},
+complete:{
+type:boolean,
+default:false
+
+},
+createdby:{
+type:mongoose.Schema.Type.ObjectId,
+ref:"User",},
+},
+{timestamps:true})
+export const sub_Tudo = mongoose.model("sub-Tudo",subtudoSchema)
+
+
+
+
+
+Video6.{stackblitz------>>>>>>>VSCODE}
+UNDER MODELS Another folder ecommerce
+1.use.models.js
+2.category.models.js
+3.product.models.js
+4.order.models.js
+
+user.models.js///////
+import mongoose from "mongoose"
+
+const USERschema=new mongoose.Schema({
+username:{
+type:String,
+required:true,
+lowercase:true,
+unique:true,
+},
+email:{
+type:String,
+required:true,
+lowercase:true,
+unique:true,
+},
+password:{
+type:String,
+required:true,
+}
+
+},{timestamps=true})
+ export const User =mongoose.model("User",USERschema) 
+
+
+category.model.js////////
+import mongoose from "mongoose"
+const categoryschema=new mongoose.Schema({
+name:{
+type:String,
+required:true,
+},
+
+},{timestamps:true})
+ export const Category =mongoose.model("Category",categoryschema) 
+
+product.models.js////////
+import mongoose from "mongoose"
+const productschema=new mongoose.Schema({
+description:{
+required:true,
+type:String,
+},
+name:{
+required:true,
+type:String,
+
+},
+productimage:{
+type:String,
+},
+price:{
+type:Number,
+default:0,
+},
+stock:{
+deafult:0,
+type:Number
+},
+category:{
+type:mongoose.Schema.Type.ObjectId,
+ref:'Category',
+required:true,
+
+},
+owner:{
+type:mongoose.Schema.Type.ObjectType
+ref:'User'}
+
+},{timestamps:true})
+ export const product =mongoose.model("product",productschema) 
+
+
+
+order.models.js/////////
+
+import mongoose from "mongoose"
+const orderitemschema=new mongoose.Schema({
+productID:{
+type:mongoose.Schema.type.OBJECTiD,
+ref:"product",},
+quantity:{
+type:Number,
+required:true,},
+})
+const orderschema=new mongoose.Schema({
+orderprice:{
+type:true,
+required:true},
+customer:{
+type:mongoose.Schema.type.OBJECTiD,
+REF:"user"},
+
+orderitems:{
+type:[orderitemSchema]
+
+},
+address:{
+type:String,
+required:true,},
+status:{
+type:sTRING,
+enum:["Pending","cancelled","delivered"],
+default:"pending"
+}
+
+},
+
+},{timestamps=true})
+export const order =mongoose.model("order",orderschema) 
+
+
+hospital management system //?////////
+1.doctor.models.js
+2.patient.models.js
+3.hospital.model.js
+4.medicalrecor.models.js
+
+basic boilrplate codes 
+medical record////
+import mongoose from "mongoose"
+const   medicalrecordschema=new mongoose.Schema({},{timestamps=true})
+export const medicalrecord =mongoose.model("medicalrecord",medicalrecord) 
+doctor.js////
+import mongoose from "mongoose"
+const  doctorschema=new mongoose.Schema({
+
+name:{
+type:string,
+required:true,
+
+},
+salary:{
+type:NumBER,
+required:true,
+},
+qualification:{
+type:string,
+required:true,
+
+}
+
+expierice:{
+type:NumBER,
+required:true,
+default:0,
+}
+worksinhospital:{
+{
+type:mongoose.schema.type.ObjectiD
+REF:'HOSPITAL'
+}
+
+
+}
+
+
+
+
+},{timestamps=true})
+export const doctor =mongoose.model("doctor",doctorschema)
+patient///
+import mongoose from "mongoose"
+const   patientschema=new mongoose.Schema({
+name:{
+typpe:string,
+required:true,
+},
+diagniosedwith:{
+typpe:string,
+required:true
+,
+},
+age:{
+type:Number,
+required:true,
+},
+bloodgroup:{
+type:String,
+required:true,
+},
+GENDER:{
+type:string,
+enum:["M","F","O"],
+required:true,
+},
+admittedin:{
+type;mongoose.Schema.type.ObjectId,
+ref:'"hospital",
+
+},
+photo;{
+type:string,}
+
+
+
+
+},{timestamps=true})
+export const patient =mongoose.model("patient",patientschema)
+hospital//
+import mongoose from "mongoose"
+const  hospitalschema=new mongoose.Schema({
+
+name:{
+
+},
+addressline1:{
+},
+addresslin2:{},
+pincode:{},
+specialiszein:[{type:string}]
+
+
+
+},{timestamps=true})
+export const hospital =mongoose.model("hospital",hospitalschema)
+
+
+
+
+
